@@ -7,5 +7,10 @@
 
     <application>
         <service android:name=".service.DrawMenuService"/>
+
+        <service
+            android:name=".ScreenRecorder"
+            android:enabled="true"
+            android:foregroundServiceType="mediaProjection"/>
     </application>
 </manifest>

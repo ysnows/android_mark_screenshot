@@ -198,6 +198,7 @@ public class FloatSettingView extends RelativeLayout implements View.OnClickList
     public static final String ACTION_CLOSE_DRAWING_PAGE = "ACTION_CLOSE_DRAWING_PAGE";
     public static final String ACTION_CLOSE_APPUI_PAGE = "ACTION_CLOSE_APPUI_PAGE";
     public static final String ACTION_CAPTURE_FINISHED = "ACTION_CAPTURE_FINISHED";
+    public static final String ACTION_CAPTURE_END = "ACTION_CAPTURE_END";
     public static final String ACTION_LAUCH = "ACTION_LAUCH";
     public static final String ACTION_EDIT_TEXT_MODE = "ACTION_EDIT_TEXT_MODE";
 

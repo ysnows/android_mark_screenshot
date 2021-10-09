@@ -49,7 +49,7 @@ public class DrawMenuService extends Service {
                 .setLargeIcon(BitmapFactory.decodeResource(this.getResources(), R.mipmap.ic_launcher)) // 设置下拉列表中的图标(大图标)
                 //.setContentTitle("SMI InstantView") // 设置下拉列表里的标题
                 .setSmallIcon(R.mipmap.ic_launcher) // 设置状态栏内的小图标
-                .setContentText("is running......") // 设置上下文内容
+                .setContentText("bug pusher is running......") // 设置上下文内容
                 .setWhen(System.currentTimeMillis()); // 设置该通知发生的时间
 
         /*以下是对Android 8.0的适配*/
@@ -83,6 +83,7 @@ public class DrawMenuService extends Service {
         mLocalManager = LocalBroadcastManager.getInstance(this);
         IntentFilter filter = new IntentFilter();
         filter.addAction(FloatSettingView.ACTION_CAPTURE_FINISHED);
+        filter.addAction(FloatSettingView.ACTION_CAPTURE_END);
         mLocalManager.registerReceiver(mReceiver, filter);
         mIconHolder = new IconHolder(this);
         mMenuHolder = new MenuHolder(this);
@@ -166,6 +167,18 @@ public class DrawMenuService extends Service {
             final String action = intent.getAction();
             if (FloatSettingView.ACTION_CAPTURE_FINISHED.equals(action)) {
                 mMenuSwitchHolderCallback.switchToIconMode();
+            }
+
+            if (FloatSettingView.ACTION_CAPTURE_END.equals(action)) {
+
+                if (mScreenShot == null) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        mScreenShot = new NewScreenShotUtilImpl(context);
+                    } else {
+                        mScreenShot = OldScreenShotUtilImpl.getInstance(context);
+                    }
+                }
+                mScreenShot.startScreenshot();
             }
         }
     };
