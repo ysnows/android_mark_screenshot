@@ -53,7 +53,7 @@ public class MainPageFragment extends BaseFragment {
     @Override
     public void initView() {
         super.initView();
-        checkForUpdate();
+//        checkForUpdate();
         mAdapter = new PictureAdapter(getChildFragmentManager());
         viewpager.setAdapter(mAdapter);
         tabs.setupWithViewPager(viewpager);
@@ -108,7 +108,11 @@ public class MainPageFragment extends BaseFragment {
         if(checkFloatWindowPermission()){
             PreferenceConnector.writeBoolean(getActivity(),PreferenceConnector.KEY_FLOAT_OPENED,true);
 
-            getActivity().startService(new Intent(getActivity(), DrawMenuService.class));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                getActivity().startForegroundService(new Intent(getActivity(), DrawMenuService.class));
+            }else {
+                getActivity().startService(new Intent(getActivity(), DrawMenuService.class));
+            }
         }else{
             showAppSettingPage();
         }

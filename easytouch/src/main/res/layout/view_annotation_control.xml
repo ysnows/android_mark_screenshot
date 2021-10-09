@@ -24,7 +24,7 @@
                 style="@style/text_draw_menu_shape"
                 android:background="@drawable/tab_anno_freehand_selector" />
 
-            <androidx.core.widget.Space
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -34,7 +34,7 @@
                 style="@style/text_draw_menu_shape"
                 android:background="@drawable/anno_circle_selector" />
 
-            <androidx.core.widget.Space
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -44,7 +44,7 @@
                 style="@style/text_draw_menu_shape"
                 android:background="@drawable/anno_arrow_selector" />
 
-            <androidx.core.widget.Space
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -73,7 +73,7 @@
                 android:layout_gravity="center"
                 android:background="@mipmap/ic_draw_text" />
 
-            <androidx.core.widget.Space
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -83,7 +83,7 @@
                 style="@style/text_draw_menu"
                 android:background="@drawable/tab_anno_eraser_selector" />
 
-            <androidx.core.widget.Space
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -93,7 +93,7 @@
                 style="@style/text_draw_menu"
                 android:background="@drawable/tab_anno_mask_selector" />
 
-            <androidx.core.widget.Space
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -117,7 +117,7 @@
                 android:layout_height="26dp"
                 android:background="@drawable/anno_scale_selector" />
 
-            <androidx.core.widget.Space
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -127,7 +127,7 @@
                 style="@style/text_draw_menu"
                 android:background="@mipmap/ic_reset" />
 
-            <androidx.core.widget.Space
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -137,7 +137,7 @@
                 style="@style/text_draw_menu"
                 android:background="@mipmap/ic_restore" />
 
-            <androidx.core.widget.Space
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -163,7 +163,7 @@
                 android:background="@drawable/anno_scale_selector"
                 android:visibility="invisible" />
 
-            <androidx.core.widget.Space
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -173,7 +173,7 @@
                 style="@style/text_draw_menu"
                 android:background="@mipmap/btn_share_press" />
 
-            <androidx.core.widget.Space
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -184,7 +184,7 @@
                 style="@style/text_draw_menu"
                 android:background="@drawable/open_close_selector" />
 
-            <androidx.core.widget.Space
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />

@@ -15,6 +15,8 @@ import android.view.WindowManager;
 import com.windhike.fastcoding.base.BaseFragment;
 import java.util.List;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 /**
  * author:gzzyj on 2017/7/14 0014.
  * email:zhyongjun@windhike.cn
@@ -80,6 +82,7 @@ public class CommonFragmentActivity extends BaseFragmentActivity {
             if(flags != -1){
                 intent.addFlags(flags);
             }
+            intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         }catch (Exception e){
             e.printStackTrace();

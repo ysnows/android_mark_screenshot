@@ -9,7 +9,7 @@
     tools:context="com.windhike.fastcoding.CommonFragmentActivity"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -38,7 +38,7 @@
                 android:layout_marginRight="30dp"
                 android:text="设置"/>
         </LinearLayout>
-    </androidx.appcompat.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 
     <androidx.recyclerview.widget.RecyclerView
