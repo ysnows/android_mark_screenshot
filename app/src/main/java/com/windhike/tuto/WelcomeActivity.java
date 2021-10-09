@@ -1,7 +1,7 @@
 package com.windhike.tuto;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.KeyEvent;
 import android.view.Window;
 import android.view.WindowManager;

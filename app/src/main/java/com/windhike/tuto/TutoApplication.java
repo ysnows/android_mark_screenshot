@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.windhike.annotation.configsapp.AnnotationInitialize;
 import com.windhike.annotation.model.PreferenceConnector;
 import com.windhike.fastcoding.BaseApplication;
@@ -28,7 +28,7 @@ public class TutoApplication extends BaseApplication{
         INSTANCE = this;
         PreferenceConnector.writeBoolean(this, FloatSettingView.KEY_DRAWING_NOW,false);
         AnnotationInitialize.getInstance().initialize(this);
-        FlavorConfig.getInstance().init(this);
+//        FlavorConfig.getInstance().init(this);
 
         mLocalBroadcastManager = LocalBroadcastManager.getInstance(this);
         IntentFilter filter = new IntentFilter();

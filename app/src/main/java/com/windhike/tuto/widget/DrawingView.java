@@ -19,11 +19,10 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.net.Uri;
-import android.support.v4.content.res.ResourcesCompat;
-import android.support.v4.internal.view.SupportMenu;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.core.internal.view.SupportMenu;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
@@ -34,7 +33,7 @@ import android.view.ViewConfiguration;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
-import com.umeng.analytics.MobclickAgent;
+
 import com.windhike.annotation.common.DrawUtils;
 import com.windhike.annotation.configsapp.AnnotationInitialize;
 import com.windhike.annotation.configsapp.Configs;
@@ -1985,7 +1984,7 @@ public class DrawingView extends RelativeLayout {
     }
 
     public void createText(float x, float y, String text) {
-        MobclickAgent.onEvent(getContext(),"create_text");
+
         Rect mRectText = new Rect();
         this.mCurrentSettingPaint.getTextBounds(text, 0, text.length(), mRectText);
         int width = mRectText.left + mRectText.width();

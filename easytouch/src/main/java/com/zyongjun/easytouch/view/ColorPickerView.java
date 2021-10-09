@@ -2,17 +2,16 @@ package com.zyongjun.easytouch.view;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.umeng.analytics.MobclickAgent;
+
 import com.zyongjun.easytouch.R;
 import com.zyongjun.easytouch.service.DrawMenuService.HolderSwitchCallback;
 import com.zyongjun.easytouch.utils.PreferenceConnector;
@@ -111,7 +110,7 @@ public class ColorPickerView extends RelativeLayout implements View.OnClickListe
     public void onColorChanged(int index) {
         HashMap<String,String> map = new HashMap<>();
         map.put("index",String.valueOf(index));
-        MobclickAgent.onEvent(getContext(),"menu_color_index",map);
+
         PreferenceConnector.writeInteger(getContext(), KEY_COLOR_SELECTED, index);
         Intent intent = new Intent(ACTION_COLOR_CHANGED);
         intent.putExtra(ACTION_COLOR_CHANGED,index);

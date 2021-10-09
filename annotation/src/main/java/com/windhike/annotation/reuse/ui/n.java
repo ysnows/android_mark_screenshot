@@ -4,11 +4,9 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build.VERSION;
-import android.support.annotation.ColorInt;
+import androidx.annotation.ColorInt;
 import android.view.Window;
-import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
-import com.windhike.annotation.reuse.DisplayUtil;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

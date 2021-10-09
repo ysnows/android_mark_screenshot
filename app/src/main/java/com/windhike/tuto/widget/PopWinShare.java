@@ -16,7 +16,7 @@ import com.tencent.mm.opensdk.modelmsg.WXImageObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
-import com.umeng.analytics.MobclickAgent;
+
 import com.windhike.tuto.R;
 import java.io.ByteArrayOutputStream;
 
@@ -104,10 +104,10 @@ public class PopWinShare extends PopupWindow implements View.OnClickListener{
                         return;
                     }
 
-                    if (!wxApi.isWXAppSupportAPI()) {
-                        Toast.makeText(mRootView.getContext(), R.string.toast_share_wx_update, Toast.LENGTH_SHORT).show();
-                        return;
-                    }
+//                    if (!wxApi.isWXAppSupportAPI()) {
+//                        Toast.makeText(mRootView.getContext(), R.string.toast_share_wx_update, Toast.LENGTH_SHORT).show();
+//                        return;
+//                    }
 //                    WXWebpageObject webpage = new WXWebpageObject();
 //                    webpage.webpageUrl = mShareObject.webUrl;
                     Bitmap bitmap = mShareCallback.getCurrentBitmap();
@@ -142,7 +142,7 @@ public class PopWinShare extends PopupWindow implements View.OnClickListener{
 
                     closePopWin();
 //                    if (!TextUtils.isEmpty(mShareObject.cpType)) {
-//                        MobclickAgent.onEvent(mActivity, mShareObject.cpType);
+//
 //                    }
 //                    if (thumb != null && !thumb.isRecycled()) {
 //                        thumb.recycle();
@@ -159,12 +159,12 @@ public class PopWinShare extends PopupWindow implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.share_btn_wx:
-                MobclickAgent.onEvent(mRootView.getContext(),"share_friends");
+
 //                shareToWX();
                 wechatShare(true);
                 break;
             case R.id.share_btn_pyx:
-                MobclickAgent.onEvent(mRootView.getContext(),"share_timeline");
+
 //                shareToTimeline();
                 wechatShare(false);
                 break;

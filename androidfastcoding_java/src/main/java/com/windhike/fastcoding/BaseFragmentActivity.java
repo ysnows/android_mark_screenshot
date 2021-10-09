@@ -1,10 +1,10 @@
 package com.windhike.fastcoding;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import com.umeng.analytics.MobclickAgent;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.windhike.fastcoding.base.BaseFragment;
 
 
@@ -39,14 +39,14 @@ public class BaseFragmentActivity extends AppCompatActivity{
     public void onResume() {
         super.onResume();
         ((BaseApplication)getApplication()).setForground(true);
-        MobclickAgent.onResume(this);       //统计时长
+
     }
 
     @Override
     public void onPause() {
         super.onPause();
         ((BaseApplication)getApplication()).setForground(false);
-        MobclickAgent.onPause(this);
+
     }
 
 }

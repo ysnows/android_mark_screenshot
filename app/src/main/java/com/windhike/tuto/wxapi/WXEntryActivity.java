@@ -2,7 +2,7 @@ package com.windhike.tuto.wxapi;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.widget.Toast;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
@@ -10,7 +10,7 @@ import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
-import com.umeng.analytics.MobclickAgent;
+
 import com.windhike.tuto.R;
 import com.windhike.tuto.TutoApplication;
 
@@ -48,18 +48,18 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
             case BaseResp.ErrCode.ERR_OK:
 //                ShareObject object = ApplicationDelegate.getInstance().getShareObject();
 //                logShare(object);
-                MobclickAgent.onEvent(this,"share_success");
+
                 showToastAndBack(getString(R.string.toast_share_succ));
                 break;
             case BaseResp.ErrCode.ERR_USER_CANCEL:
-                MobclickAgent.onEvent(this,"share_cancel");
+
                 showToastAndBack(getString(R.string.toast_share_cancel));
                 break;
             case BaseResp.ErrCode.ERR_AUTH_DENIED:
                 showToastAndBack(getString(R.string.toast_share_autoerr));
                 break;
             default:
-                MobclickAgent.onEvent(this,"share_fail");
+
                 showToastAndBack(getString(R.string.toast_share_back));
                 break;
         }

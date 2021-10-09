@@ -5,7 +5,7 @@ import android.content.Context;
 
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
-import com.umeng.analytics.MobclickAgent;
+
 import com.xiaomi.market.sdk.XiaomiUpdateAgent;
 
 /**
@@ -16,17 +16,14 @@ import com.xiaomi.market.sdk.XiaomiUpdateAgent;
 public abstract class FlavorSetting {
 
     public void init(Application context) {
-        configUmeng(context,"tencent");
-        registerWX(context);
+//        configUmeng(context, "tencent");
+//        registerWX(context);
 
     }
 
-    protected void configUmeng(Context context,String channel) {
-        MobclickAgent.setDebugMode( true );
-        MobclickAgent.UMAnalyticsConfig config = new MobclickAgent.UMAnalyticsConfig(context,
-                "5966e53caed1793fed000288",channel,
-                MobclickAgent.EScenarioType.E_UM_ANALYTICS_OEM,true);
-        MobclickAgent. startWithConfigure(config);
+    protected void configUmeng(Context context, String channel) {
+
+
     }
 
     protected void registerWX(Application context) {

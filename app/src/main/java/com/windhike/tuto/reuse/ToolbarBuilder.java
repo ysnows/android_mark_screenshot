@@ -3,7 +3,7 @@ package com.windhike.tuto.reuse;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.res.ResourcesCompat;
+import androidx.core.content.res.ResourcesCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;

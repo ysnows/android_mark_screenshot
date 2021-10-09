@@ -4,20 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
-import android.support.annotation.IntDef;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.umeng.analytics.MobclickAgent;
 import com.zyongjun.easytouch.R;
 import com.zyongjun.easytouch.service.DrawMenuService.HolderSwitchCallback;
 import com.zyongjun.easytouch.utils.PreferenceConnector;
@@ -109,7 +106,7 @@ public class FloatSettingView extends RelativeLayout implements View.OnClickList
         tvSave.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                MobclickAgent.onEvent(getContext(),"menu_save");
+
                 if (mSettingCallback != null) {
                     mSettingCallback.switchToIconMode();
                 }
@@ -125,10 +122,10 @@ public class FloatSettingView extends RelativeLayout implements View.OnClickList
                 PreferenceConnector.writeBoolean(getContext(),KEY_DRAWING_NOW,!v.isSelected());
                 if (mSettingCallback != null) {
                     if (v.isSelected()) {
-                        MobclickAgent.onEvent(getContext(),"menu_new_screen");
+
                         mSettingCallback.onCaptureRequest();
                     }else{
-                        MobclickAgent.onEvent(getContext(),"icon_start_main");
+
                         closeDrawingPage();
                         mSettingCallback.switchToIconMode();
                     }
@@ -140,7 +137,7 @@ public class FloatSettingView extends RelativeLayout implements View.OnClickList
         vHome.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                MobclickAgent.onEvent(getContext(),"icon_start_main");
+
                 if (mSettingCallback != null) {
                     mSettingCallback.switchToIconMode();
                 }
@@ -244,13 +241,13 @@ public class FloatSettingView extends RelativeLayout implements View.OnClickList
     }
 
     public void onShareAnnotation() {
-        MobclickAgent.onEvent(getContext(),"menu_share");
+
         Intent intent = new Intent(ACTION_SHARE_ANNOTATION);
         mBroadcastmanager.sendBroadcast(intent);
     }
 
     public void onSaveAnnotation() {
-        MobclickAgent.onEvent(getContext(),"menu_save");
+
         Intent intent = new Intent(ACTION_SAVE_ANNOTAION);
         mBroadcastmanager.sendBroadcast(intent);
     }
@@ -294,12 +291,12 @@ public class FloatSettingView extends RelativeLayout implements View.OnClickList
             mSettingCallback.switchToIconMode();
         }
         if (id == R.id.tvReset) {
-            MobclickAgent.onEvent(getContext(),"menu_reset");
+
             unDo();
             return;
         }
         if (id == R.id.tvRestore) {
-            MobclickAgent.onEvent(getContext(),"menu_restore");
+
             reDo();
             return;
         }
@@ -313,31 +310,31 @@ public class FloatSettingView extends RelativeLayout implements View.OnClickList
         vScale.setSelected(false);
         v.setSelected(true);
         if (id == R.id.vScale) {
-            MobclickAgent.onEvent(getContext(),"menu_zoom");
+
             switchZoomMode(true);
             return;
         }
 
         if (id == R.id.vFreeHand) {
-            MobclickAgent.onEvent(getContext(),"menu_free");
+
             mDrawingShape = 0;
         } else if (id == R.id.vCircle) {
-            MobclickAgent.onEvent(getContext(),"menu_circle");
+
             mDrawingShape = 3;
         } else if (id == R.id.vArrow) {
-            MobclickAgent.onEvent(getContext(),"menu_arrow");
+
             mDrawingShape = 1;
         } else if (id == R.id.vSquare) {
-            MobclickAgent.onEvent(getContext(),"menu_rect");
+
             mDrawingShape = 2;
         } else if (id == R.id.vMask) {
-            MobclickAgent.onEvent(getContext(),"menu_mask");
+
             mDrawingShape = 4;
         } else if (id == R.id.vEraser) {
-            MobclickAgent.onEvent(getContext(),"menu_erraser");
+
             mDrawingShape = 7;
         } else if (id == R.id.vText) {
-            MobclickAgent.onEvent(getContext(),"menu_text");
+
             onEditTextMode();
             return;
         }

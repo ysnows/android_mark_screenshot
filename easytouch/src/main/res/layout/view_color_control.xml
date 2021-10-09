@@ -24,7 +24,7 @@
                 style="@style/text_draw_menu"
                 android:background="@drawable/anno_color0_selector" />
 
-            <android.support.v4.widget.Space
+            <androidx.core.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -34,7 +34,7 @@
                 style="@style/text_draw_menu"
                 android:background="@drawable/anno_color1_selector" />
 
-            <android.support.v4.widget.Space
+            <androidx.core.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -44,7 +44,7 @@
                 style="@style/text_draw_menu"
                 android:background="@drawable/anno_color2_selector" />
 
-            <android.support.v4.widget.Space
+            <androidx.core.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -69,7 +69,7 @@
                 android:background="@drawable/anno_color4_selector" />
 
 
-            <android.support.v4.widget.Space
+            <androidx.core.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -79,7 +79,7 @@
                 style="@style/text_draw_menu"
                 android:background="@drawable/anno_color5_selector" />
 
-            <android.support.v4.widget.Space
+            <androidx.core.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -89,7 +89,7 @@
                 style="@style/text_draw_menu"
                 android:background="@drawable/anno_color6_selector" />
 
-            <android.support.v4.widget.Space
+            <androidx.core.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -111,7 +111,7 @@
                 style="@style/text_draw_menu"
                 android:background="@drawable/anno_color8_selector" />
 
-            <android.support.v4.widget.Space
+            <androidx.core.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -122,7 +122,7 @@
                 android:background="@drawable/anno_color9_selector" />
 
 
-            <android.support.v4.widget.Space
+            <androidx.core.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -133,7 +133,7 @@
                 android:background="@drawable/anno_color10_selector" />
 
 
-            <android.support.v4.widget.Space
+            <androidx.core.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -156,7 +156,7 @@
                 style="@style/text_draw_menu"
                 android:background="@drawable/anno_color12_selector" />
 
-            <android.support.v4.widget.Space
+            <androidx.core.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -166,7 +166,7 @@
                 style="@style/text_draw_menu"
                 android:background="@drawable/anno_color13_selector" />
 
-            <android.support.v4.widget.Space
+            <androidx.core.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -176,7 +176,7 @@
                 style="@style/text_draw_menu"
                 android:background="@drawable/anno_color14_selector" />
 
-            <android.support.v4.widget.Space
+            <androidx.core.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />

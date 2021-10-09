@@ -8,12 +8,11 @@ import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
-import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
+import androidx.annotation.Nullable;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import android.view.View;
 
-import com.umeng.analytics.MobclickAgent;
 import com.windhike.fastcoding.BaseApplication;
 import com.windhike.fastcoding.CommonFragmentActivity;
 import com.zyongjun.easytouch.screenshot.NewScreenShotUtilImpl;
@@ -63,7 +62,7 @@ public class DrawMenuService extends Service{
             return new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    MobclickAgent.onEvent(DrawMenuService.this,"menu_color");
+
                     mMenuHolder.onDestory();
                     mColorHolder.initView();
                     mColorHolder.setMenuCallback(mMenuSwitchHolderCallback);

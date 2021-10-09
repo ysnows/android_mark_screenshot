@@ -36,7 +36,7 @@
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="5966e53caed1793fed000288" />
-        <provider android:name="android.support.v4.content.FileProvider"
+        <provider android:name="androidx.core.content.FileProvider"
             android:authorities="com.windhike.tuto.selfupdate.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true" >

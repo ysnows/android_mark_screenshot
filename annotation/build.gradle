@@ -8,6 +8,12 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+
+//        ndk {
+//            //设置支持的SO库架构
+//            abiFilters "armeabi-v7a"
+//        }
+
     }
     buildTypes {
         release {
@@ -25,6 +31,6 @@ repositories {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation (name: 'StackBlur-release', ext: 'aar')
-    implementation 'com.android.support:appcompat-v7:25.3.1'
+//    implementation (name: 'StackBlur-release', ext: 'aar')
+    implementation 'androidx.appcompat:appcompat:1.0.0'
 }

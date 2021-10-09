@@ -3,11 +3,10 @@ package com.windhike.tuto.reuse;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
-import android.support.transition.ChangeBounds;
-import android.support.transition.TransitionSet;
-import android.transition.ChangeImageTransform;
-import android.transition.ChangeTransform;
 import android.util.AttributeSet;
+
+import androidx.transition.ChangeBounds;
+import androidx.transition.TransitionSet;
 
 /**
  * author:gzzyj on 2017/9/17 0017.

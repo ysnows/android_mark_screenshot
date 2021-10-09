@@ -12,7 +12,7 @@ import android.graphics.Paint.Style;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.v4.view.ViewCompat;
+import androidx.core.view.ViewCompat;
 
 import com.windhike.annotation.R;
 import com.windhike.annotation.configsapp.AnnotationInitialize;

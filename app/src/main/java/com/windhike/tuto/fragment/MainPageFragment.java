@@ -6,20 +6,19 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
+import com.google.android.material.tabs.TabLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.ViewPager;
+
 import android.view.View;
 
-import com.umeng.analytics.MobclickAgent;
+
 import com.windhike.annotation.model.PreferenceConnector;
 import com.windhike.fastcoding.CommonFragmentActivity;
 import com.windhike.fastcoding.base.BaseFragment;
-import com.windhike.tuto.BuildConfig;
 import com.windhike.tuto.R;
 import com.windhike.fastcoding.widget.PromptManager;
 import com.windhike.tuto.widget.FloatButton;
@@ -61,7 +60,7 @@ public class MainPageFragment extends BaseFragment {
         fbSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MobclickAgent.onEvent(getActivity(),"click_setting");
+
                 CommonFragmentActivity.start(getActivity(),SettingFragment.class.getName(),null);
             }
         });
@@ -108,7 +107,7 @@ public class MainPageFragment extends BaseFragment {
         super.onResume();
         if(checkFloatWindowPermission()){
             PreferenceConnector.writeBoolean(getActivity(),PreferenceConnector.KEY_FLOAT_OPENED,true);
-            MobclickAgent.onEvent(getActivity(),"open_service");
+
             getActivity().startService(new Intent(getActivity(), DrawMenuService.class));
         }else{
             showAppSettingPage();

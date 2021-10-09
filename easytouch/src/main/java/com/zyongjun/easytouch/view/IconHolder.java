@@ -2,9 +2,8 @@ package com.zyongjun.easytouch.view;
 
 import android.content.Context;
 import android.graphics.PixelFormat;
-import android.support.v4.view.ViewCompat;
+import androidx.core.view.ViewCompat;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;

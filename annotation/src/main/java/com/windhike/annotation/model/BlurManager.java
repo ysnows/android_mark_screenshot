@@ -3,7 +3,6 @@ package com.windhike.annotation.model;
 import android.content.Context;
 import android.graphics.Bitmap;
 
-import com.enrique.stackblur.StackBlurManager;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -14,7 +13,6 @@ public class BlurManager {
     private Context _context;
     private HashMap<Integer, Blur> _hashMap;
     private Bitmap _mainBitmap;
-    private StackBlurManager _stackBlur;
 
     public class Blur {
         public Date _addingTime;
@@ -35,7 +33,6 @@ public class BlurManager {
     public void setMainBitmap(Bitmap bitmap) {
         cleanData();
         this._mainBitmap = bitmap;
-        this._stackBlur = new StackBlurManager(bitmap);
     }
 
     public Bitmap getMainBitmap() {
@@ -50,7 +47,6 @@ public class BlurManager {
         if (hasBlurWithOpacity(opacity)) {
             return this._hashMap.get(Integer.valueOf(opacity))._bitmap;
         }
-        addNewBitmap(opacity, this._stackBlur.processRenderScript(this._context, (float) opacity));
         return getBlurBitmapWithOpacity(opacity);
     }
 

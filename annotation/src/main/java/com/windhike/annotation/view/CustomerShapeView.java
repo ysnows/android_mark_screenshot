@@ -1,7 +1,6 @@
 package com.windhike.annotation.view;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.ComposePathEffect;
 import android.graphics.CornerPathEffect;
@@ -12,13 +11,12 @@ import android.graphics.Path;
 import android.graphics.PathEffect;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.v4.content.res.ResourcesCompat;
+import androidx.core.content.res.ResourcesCompat;
 import android.util.Log;
 
 import com.windhike.annotation.R;
 import com.windhike.annotation.configsapp.Configs;
 import com.windhike.annotation.model.FlaotPoint;
-import com.windhike.annotation.reuse.ui.UIUtil;
 
 import java.util.ArrayList;
 
