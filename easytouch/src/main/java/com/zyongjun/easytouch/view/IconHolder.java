@@ -87,7 +87,8 @@ public class IconHolder extends BaseTouchViewHolder{
     @Override
     public WindowManager.LayoutParams getViewLayoutParams() {
         WindowManager.LayoutParams windowLayoutParams = new WindowManager.LayoutParams();
-        windowLayoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
+//        windowLayoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
+        windowLayoutParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
         windowLayoutParams.format = PixelFormat.RGBA_8888;
         windowLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
 
