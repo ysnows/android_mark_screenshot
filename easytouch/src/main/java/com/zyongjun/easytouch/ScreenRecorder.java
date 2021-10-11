@@ -62,7 +62,7 @@ public class ScreenRecorder extends Service {
 
         Notification notification = builder.build(); // 获取构建好的Notification
         notification.defaults = Notification.DEFAULT_SOUND; //设置为默认的声音
-        startForeground(110, notification);
+        startForeground(210, notification);
     }
 
 

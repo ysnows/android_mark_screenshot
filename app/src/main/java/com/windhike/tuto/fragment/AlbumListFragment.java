@@ -118,18 +118,18 @@ public class AlbumListFragment extends BaseFragment implements AlbumAdapter.Albu
 
     @Override
     public void onItemClick(View shareView,String path) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
-                    new Pair(shareView, String.format("%s_image", path))
-            );
-            setSharedElementReturnTransition(TransitionInflater.from(
-                    getActivity()).inflateTransition(R.transition.change_image_transion));
-            setExitTransition(TransitionInflater.from(
-                    getActivity()).inflateTransition(android.R.transition.fade));
-            getActivity().startActivity(AnnotationActivity.obtainNewDrawIntent(getActivity(),path),options.toBundle());
-        }else {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
+//                    new Pair(shareView, String.format("%s_image", path))
+//            );
+//            setSharedElementReturnTransition(TransitionInflater.from(
+//                    getActivity()).inflateTransition(R.transition.change_image_transion));
+//            setExitTransition(TransitionInflater.from(
+//                    getActivity()).inflateTransition(android.R.transition.fade));
+//            getActivity().startActivity(AnnotationActivity.obtainNewDrawIntent(getActivity(),path),options.toBundle());
+//        }else {
             getActivity().startActivity(AnnotationActivity.obtainNewDrawIntent(getActivity(),path));
-        }
+//        }
     }
 }
 

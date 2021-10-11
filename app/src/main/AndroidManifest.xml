@@ -18,6 +18,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_tuto"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_round_tuto_xxx"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
@@ -36,14 +37,6 @@
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="5966e53caed1793fed000288" />
-        <provider android:name="androidx.core.content.FileProvider"
-            android:authorities="com.windhike.tuto.selfupdate.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true" >
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-        </provider>
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:exported="true"
@@ -55,6 +48,20 @@
                 <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
             </intent-filter>
         </receiver>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
+
+
+
     </application>
 
 </manifest>

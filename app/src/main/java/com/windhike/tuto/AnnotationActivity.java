@@ -6,12 +6,16 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+
 import androidx.annotation.Nullable;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.core.view.ViewCompat;
+
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -19,6 +23,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.windhike.annotation.common.Utilities;
 import com.windhike.annotation.configsapp.Configs;
 import com.windhike.annotation.model.ImageDrawObject;
@@ -29,12 +34,18 @@ import com.windhike.annotation.view.CustomerShapeView;
 import com.windhike.fastcoding.CommonFragmentActivity;
 import com.windhike.fastcoding.rx.SchedulersTransFormer;
 import com.windhike.fastcoding.util.UIUtil;
+import com.windhike.tuto.utils.NougatTools;
 import com.windhike.tuto.widget.DrawingView;
 import com.windhike.tuto.widget.PopWinShare;
 import com.zyongjun.easytouch.view.FloatSettingView;
+
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -42,6 +53,7 @@ import rx.Observable;
 import rx.Observer;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
+
 import static com.windhike.tuto.fragment.AnnotationListFragment.ACTION_ANNOTATION_CHANGED;
 
 /**
@@ -49,7 +61,7 @@ import static com.windhike.tuto.fragment.AnnotationListFragment.ACTION_ANNOTATIO
  * email:zhyongjun@windhike.cn
  */
 
-public class AnnotationActivity extends CommonFragmentActivity{
+public class AnnotationActivity extends CommonFragmentActivity {
     private static final String KEY_TYPE = "KEY_TYPE";
     @BindView(R.id.rlRoot)
     View vRoot;
@@ -69,23 +81,23 @@ public class AnnotationActivity extends CommonFragmentActivity{
     private LocalBroadcastManager mLocalBroadcastManager;
 
     public static Intent obtainExistIntent(Context context, int drawIndex) {
-        Intent intent = new Intent(context,AnnotationActivity.class);
+        Intent intent = new Intent(context, AnnotationActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt(Configs.KEY_ANNOTATION_DRAW_INDEX, drawIndex);
-        bundle.putBoolean(CommonFragmentActivity.BUNDLE_KEY_TRANSLUCENT,true);
-        bundle.putBoolean(CommonFragmentActivity.BUNDLE_KEY_FULLSCREEN,true);
+        bundle.putBoolean(CommonFragmentActivity.BUNDLE_KEY_TRANSLUCENT, true);
+        bundle.putBoolean(CommonFragmentActivity.BUNDLE_KEY_FULLSCREEN, true);
         intent.putExtras(bundle);
         return intent;
     }
 
 
     public static Intent obtainNewDrawIntent(Context context, String path) {
-        Intent intent = new Intent(context,AnnotationActivity.class);
+        Intent intent = new Intent(context, AnnotationActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_TYPE, 2);
         bundle.putString(Configs.KEY_ANNOTATION_DRAW_NEW_PATH, path);
-        bundle.putBoolean(CommonFragmentActivity.BUNDLE_KEY_TRANSLUCENT,true);
-        bundle.putBoolean(CommonFragmentActivity.BUNDLE_KEY_FULLSCREEN,true);
+        bundle.putBoolean(CommonFragmentActivity.BUNDLE_KEY_TRANSLUCENT, true);
+        bundle.putBoolean(CommonFragmentActivity.BUNDLE_KEY_FULLSCREEN, true);
         intent.putExtras(bundle);
         return intent;
     }
@@ -94,13 +106,13 @@ public class AnnotationActivity extends CommonFragmentActivity{
     @Override
     public void onResume() {
         super.onResume();
-        PreferenceConnector.writeBoolean(this, FloatSettingView.KEY_DRAWING_NOW,true);
+        PreferenceConnector.writeBoolean(this, FloatSettingView.KEY_DRAWING_NOW, true);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        PreferenceConnector.writeBoolean(this,FloatSettingView.KEY_DRAWING_NOW,false);
+        PreferenceConnector.writeBoolean(this, FloatSettingView.KEY_DRAWING_NOW, false);
     }
 
     @Override
@@ -139,7 +151,7 @@ public class AnnotationActivity extends CommonFragmentActivity{
                     } else if (action.equals(FloatSettingView.ACTION_SAVE_ANNOTAION)) {
                         saveImageReport();
                     } else if (action.equals(FloatSettingView.ACTION_SHARE_ANNOTATION)) {
-                        if(!isFinishing()) {
+                        if (!isFinishing()) {
                             shareAnnotation();
                         }
                     } else if (action.equals(FloatSettingView.ACTION_CLOSE_DRAWING_PAGE)) {
@@ -157,7 +169,7 @@ public class AnnotationActivity extends CommonFragmentActivity{
     };
 
     public void shareAnnotation() {
-        PopWinShare popWinShare = new PopWinShare(this,vRoot);
+        PopWinShare popWinShare = new PopWinShare(this, vRoot);
         popWinShare.setShareCallback(new PopWinShare.ShareCallback() {
             @Override
             public void onClose() {
@@ -256,11 +268,12 @@ public class AnnotationActivity extends CommonFragmentActivity{
                 imageDrawObjects.get(indexCurrentDraw).getListRootShape().addAll(listShapeCurrent);
                 imageDrawObjects.get(indexCurrentDraw).set_undoRedoCurrentIndex(drawingView.get_undoRedoCurrentIndex());
             }
-            mManagerImageObject.writeToFile(this,getProjectName());
+            mManagerImageObject.writeToFile(this, getProjectName());
         }
     }
 
     private Unbinder unbinder;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -293,10 +306,30 @@ public class AnnotationActivity extends CommonFragmentActivity{
             if ((mImageEditPath != null && mImageEditPath.length() > 0) || imageDrawObjects.get(mDrawObjectIndex).getListRootShape().size() > 0) {
                 flagLoadListRootShape = true;
             }
+
+
+            Bitmap oBitmap = null;
             if (new File(mImageDisplayPath).exists()) {
-                Bitmap currentLoadingBitmap = Utilities.scaleToActualAspectRatio(BitmapFactory.decodeFile(mImageDisplayPath),
+
+                File file = new File(mImageDisplayPath);
+                try {
+//                    Bitmap bitmap = BitmapFactory.decodeStream(fileInputStream);
+
+                    Uri uri = NougatTools.formatFileProviderUri(this, file);
+                    oBitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
+
+                    Log.d("helo", "hello");
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+//                oBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+
+                Bitmap currentLoadingBitmap = Utilities.scaleToActualAspectRatio(oBitmap,
                         UIUtil.DeviceInfo.getDeviceWidth(),
                         UIUtil.DeviceInfo.getDeviceHeight());
+
                 drawingView.setEdit(true);
                 drawingView.setEditText(etEditTmp);
                 drawingView.setListener(updateListener);
@@ -331,26 +364,27 @@ public class AnnotationActivity extends CommonFragmentActivity{
     public String getProjectName() {
         return Configs.ANNOTATION_IBOS;
     }
+
     public void initProject() {
         this.mManagerImageObject = ManagerImageObject.readFromFile(this, Utilities.encryptFileName(getProjectName()));
         if (this.mManagerImageObject == null) {
             mManagerImageObject = new ManagerImageObject();
         }
         ImageDrawObject imageDraw = new ImageDrawObject();
-        if(!TextUtils.isEmpty(mNewDrawPath)) {
+        if (!TextUtils.isEmpty(mNewDrawPath)) {
             imageDraw.setOriginalImagePath(mNewDrawPath);
             mManagerImageObject.getListChooseDrawObject().add(imageDraw);
         }
         if (mDrawObjectIndex == -1) {
             mDrawObjectIndex = mManagerImageObject.getListChooseDrawObject().size() - 1;
         }
-        if(mNewDrawPath==null) {
+        if (mNewDrawPath == null) {
             ViewCompat.setTransitionName(drawingContent, String.format("%d_annotation", mDrawObjectIndex));
-        }else{
+        } else {
             ViewCompat.setTransitionName(drawingContent, String.format("%s_image", mNewDrawPath));
         }
         loadDrawObject();
-        if(mNewDrawPath!=null) {
+        if (mNewDrawPath != null) {
             copyImageFormPath(imageDraw);
         }
     }

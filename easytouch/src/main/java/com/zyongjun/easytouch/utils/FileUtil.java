@@ -19,11 +19,11 @@ public class FileUtil {
     public static final String SCREENSHOT_NAME = "Screenshot";
 
     public static String getAppPath(Context context) {
-        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-            return Environment.getExternalStorageDirectory().toString();
-        } else {
+//        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+//            return Environment.getExternalStorageDirectory().toString();
+//        } else {
             return context.getFilesDir().toString();
-        }
+//        }
 
     }
 
