@@ -1,53 +1,55 @@
-package com.zyongjun.easytouch.view;
+package easytouch.view;
 
 import android.content.Context;
 import android.graphics.PixelFormat;
 import androidx.core.view.ViewCompat;
+import easytouch.service.DrawMenuService;
+
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import com.zyongjun.easytouch.R;
-import com.zyongjun.easytouch.service.DrawMenuService.HolderSwitchCallback;
 
 /**
  * author:gzzyj on 2017/8/7 0007.
  * email:zhyongjun@windhike.cn
  */
-public class MenuHolder extends BaseTouchViewHolder{
+public class ColorHolder extends BaseTouchViewHolder{
     private Context mContext;
-    private FloatSettingView mFloatSettingView;
-    private HolderSwitchCallback mCallback;
-    public MenuHolder(Context context) {
+    private ColorPickerView mColorPickerView;
+    private DrawMenuService.HolderSwitchCallback mCallback;
+    public ColorHolder(Context context) {
         super(context);
         mContext = context;
     }
 
     @Override
     public void initView() {
-        if (mFloatSettingView == null) {
-            mFloatSettingView = new FloatSettingView(mContext);
+        if (mColorPickerView != null) {
+            mWindowManager.addView(mColorPickerView,getViewLayoutParams());
+            return;
         }
-        mFloatSettingView.refreshUI();
-        mWindowManager.addView(mFloatSettingView,getViewLayoutParams());
+        mColorPickerView = new ColorPickerView(mContext);
+        mWindowManager.addView(mColorPickerView,getViewLayoutParams());
     }
 
-    public void setMenuCallback(HolderSwitchCallback callback) {
+    public void setMenuCallback(DrawMenuService.HolderSwitchCallback callback) {
         mCallback = callback;
-        mFloatSettingView.setSettingCallback(mCallback);
+        mColorPickerView.setSettingCallback(mCallback);
     }
 
     @Override
     public WindowManager.LayoutParams getViewLayoutParams() {
         WindowManager.LayoutParams windowLayoutParams = new WindowManager.LayoutParams();
-        windowLayoutParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
+        windowLayoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
         windowLayoutParams.format = PixelFormat.RGBA_8888;
         windowLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
 
         windowLayoutParams.windowAnimations= R.style.IconViewAnimator;
         DisplayMetrics metrics = new DisplayMetrics();
         mWindowManager.getDefaultDisplay().getMetrics(metrics);
-        windowLayoutParams.alpha = 0.6f;
+//        windowLayoutParams.alpha = 0.6f;
         windowLayoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
         windowLayoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
         windowLayoutParams.gravity = Gravity.CENTER_VERTICAL;
@@ -56,13 +58,13 @@ public class MenuHolder extends BaseTouchViewHolder{
 
     @Override
     public View getRootView() {
-        return mFloatSettingView;
+        return mColorPickerView;
     }
 
     @Override
     public void onDestory() {
-        if(mFloatSettingView!=null&& ViewCompat.isAttachedToWindow(mFloatSettingView)) {
-            mWindowManager.removeView(mFloatSettingView);
+        if(mColorPickerView !=null&& ViewCompat.isAttachedToWindow(mColorPickerView)) {
+            mWindowManager.removeView(mColorPickerView);
         }
     }
 }

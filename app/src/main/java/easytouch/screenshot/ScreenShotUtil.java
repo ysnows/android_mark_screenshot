@@ -1,4 +1,4 @@
-package com.zyongjun.easytouch.screenshot;
+package easytouch.screenshot;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +8,7 @@ import android.os.Handler;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.widget.Toast;
 import com.windhike.fastcoding.CommonFragmentActivity;
-import com.zyongjun.easytouch.view.FloatSettingView;
+import easytouch.view.FloatSettingView;
 import rx.Observer;
 
 /**

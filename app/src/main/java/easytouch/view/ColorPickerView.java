@@ -1,10 +1,13 @@
-package com.zyongjun.easytouch.view;
+package easytouch.view;
 
 import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import easytouch.service.DrawMenuService;
+import easytouch.utils.PreferenceConnector;
+
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +16,6 @@ import android.widget.TextView;
 
 
 import com.zyongjun.easytouch.R;
-import com.zyongjun.easytouch.service.DrawMenuService.HolderSwitchCallback;
-import com.zyongjun.easytouch.utils.PreferenceConnector;
 
 import java.util.HashMap;
 
@@ -105,7 +106,7 @@ public class ColorPickerView extends RelativeLayout implements View.OnClickListe
 
     private LocalBroadcastManager mBroadcastmanager;
 
-    private HolderSwitchCallback mSettingCallback;
+    private DrawMenuService.HolderSwitchCallback mSettingCallback;
 
     public void onColorChanged(int index) {
         HashMap<String,String> map = new HashMap<>();
@@ -123,7 +124,7 @@ public class ColorPickerView extends RelativeLayout implements View.OnClickListe
         mBroadcastmanager.sendBroadcast(intent);
     }
 
-    public void setSettingCallback(HolderSwitchCallback callback) {
+    public void setSettingCallback(DrawMenuService.HolderSwitchCallback callback) {
         this.mSettingCallback = callback;
         if (callback != null) {
             setOnClickListener(callback.obtainMenuOutsideListener());

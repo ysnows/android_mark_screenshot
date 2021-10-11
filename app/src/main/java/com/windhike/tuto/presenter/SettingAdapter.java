@@ -19,7 +19,7 @@ import com.windhike.tuto.R;
 import com.windhike.tuto.TutoApplication;
 import com.windhike.tuto.model.SettingItem;
 import com.windhike.fastcoding.widget.PromptManager;
-import com.zyongjun.easytouch.service.DrawMenuService;
+import easytouch.service.DrawMenuService;
 import java.util.ArrayList;
 import java.util.List;
 

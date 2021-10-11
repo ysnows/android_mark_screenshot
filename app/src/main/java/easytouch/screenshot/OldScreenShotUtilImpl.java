@@ -1,4 +1,4 @@
-package com.zyongjun.easytouch.screenshot;
+package easytouch.screenshot;
 
 
 import android.annotation.SuppressLint;
@@ -20,7 +20,7 @@ import com.windhike.fastcoding.rx.SchedulersTransFormer;
 import com.windhike.fastcoding.util.MethodUtil;
 import com.windhike.fastcoding.util.ShellUtils;
 import com.zyongjun.easytouch.R;
-import com.zyongjun.easytouch.utils.FileUtil;
+import easytouch.utils.FileUtil;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;

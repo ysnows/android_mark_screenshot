@@ -26,7 +26,7 @@ import com.xiaomi.market.sdk.UpdateResponse;
 import com.xiaomi.market.sdk.UpdateStatus;
 import com.xiaomi.market.sdk.XiaomiUpdateAgent;
 import com.xiaomi.market.sdk.XiaomiUpdateListener;
-import com.zyongjun.easytouch.service.DrawMenuService;
+import easytouch.service.DrawMenuService;
 
 import butterknife.BindView;
 

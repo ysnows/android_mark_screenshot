@@ -1,8 +1,10 @@
-package com.zyongjun.easytouch.view;
+package easytouch.view;
 
 import android.content.Context;
 import android.graphics.PixelFormat;
 import androidx.core.view.ViewCompat;
+import easytouch.utils.Utils;
+
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -10,7 +12,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import com.zyongjun.easytouch.R;
-import com.zyongjun.easytouch.utils.Utils;
 
 /**
  * author:gzzyj on 2017/8/7 0007.
@@ -33,11 +34,11 @@ public class IconHolder extends BaseTouchViewHolder{
 
     @Override
     public void initView() {
-        if (mLauchIcon != null) {
-//            mWindowManager.removeViewImmediate(mLauchIcon);
-            mWindowManager.addView(mLauchIcon,getViewLayoutParams());
-            return;
-        }
+//        if (mLauchIcon != null) {
+////            mWindowManager.removeViewImmediate(mLauchIcon);
+//            mWindowManager.addView(mLauchIcon,getViewLayoutParams());
+//            return;
+//        }
         mLauchIcon = new Button(mContext);
         mLauchIcon.setBackgroundResource(R.drawable.selector_btn_launcher);
         mLauchIcon.setOnClickListener(mClickListener);

@@ -61,7 +61,7 @@ import static com.windhike.annotation.configsapp.Configs.ShapeAction.AddNewShape
 import static com.windhike.annotation.configsapp.Configs.ShapeAction.DeleteShape;
 import static com.windhike.annotation.configsapp.Configs.ShapeAction.MoveOrResizeShape;
 import static com.windhike.annotation.configsapp.Configs.ShapeAction.MoveShapeToTop;
-import static com.zyongjun.easytouch.view.ColorPickerView.KEY_COLOR_SELECTED;
+import static easytouch.view.ColorPickerView.KEY_COLOR_SELECTED;
 
 public class DrawingView extends RelativeLayout {
     private static float MAX_ZOOM = 5.0f;

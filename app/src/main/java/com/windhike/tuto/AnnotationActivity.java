@@ -37,11 +37,9 @@ import com.windhike.fastcoding.util.UIUtil;
 import com.windhike.tuto.utils.NougatTools;
 import com.windhike.tuto.widget.DrawingView;
 import com.windhike.tuto.widget.PopWinShare;
-import com.zyongjun.easytouch.view.FloatSettingView;
+import easytouch.view.FloatSettingView;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;

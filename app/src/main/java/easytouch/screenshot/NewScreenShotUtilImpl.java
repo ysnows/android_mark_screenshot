@@ -1,4 +1,4 @@
-package com.zyongjun.easytouch.screenshot;
+package easytouch.screenshot;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,26 +14,33 @@ import android.media.projection.MediaProjectionManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
+
 import androidx.annotation.RequiresApi;
+
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 import android.widget.Toast;
+
 import com.windhike.fastcoding.rx.SchedulersTransFormer;
 import com.windhike.fastcoding.util.UIUtil;
 import com.zyongjun.easytouch.R;
-import com.zyongjun.easytouch.utils.FileUtil;
+import easytouch.utils.FileUtil;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import androidx.core.content.FileProvider;
 import rx.Observable;
 import rx.Subscriber;
+import rx.android.BuildConfig;
 import rx.functions.Func1;
 
 /**
  * Created by Aria on 2017/7/19.
  */
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-public class NewScreenShotUtilImpl extends ScreenShotUtil{
+public class NewScreenShotUtilImpl extends ScreenShotUtil {
 
     private MediaProjection mediaProjection;
     public static Intent data;
@@ -44,37 +51,38 @@ public class NewScreenShotUtilImpl extends ScreenShotUtil{
 
     private ImageReader imageReader;
 
-    public NewScreenShotUtilImpl(Context context){
+    public NewScreenShotUtilImpl(Context context) {
         super(context);
         initData();
     }
 
-    private void initData(){
+    private void initData() {
         WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics displayMetrics = new DisplayMetrics();
         manager.getDefaultDisplay().getMetrics(displayMetrics);
         screenWidth = displayMetrics.widthPixels;
         screenHeight = displayMetrics.heightPixels;
         screenDensity = displayMetrics.densityDpi;
-        imageReader = ImageReader.newInstance(screenWidth,screenHeight, PixelFormat.RGBA_8888,1);
+        imageReader = ImageReader.newInstance(screenWidth, screenHeight, PixelFormat.RGBA_8888, 1);
     }
 
-    private boolean startVirtual(){
-        if (data == null){
-            Toast.makeText(context,context.getResources().getString(R.string.msg_reOpen_screenshot),Toast.LENGTH_SHORT).show();
+    private boolean startVirtual() {
+        if (data == null) {
+            Toast.makeText(context, context.getResources().getString(R.string.msg_reOpen_screenshot), Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (mediaProjection == null){
-            mediaProjection = ((MediaProjectionManager)context.getSystemService(Context.MEDIA_PROJECTION_SERVICE)).
-                    getMediaProjection(Activity.RESULT_OK,data);;
+        if (mediaProjection == null) {
+            mediaProjection = ((MediaProjectionManager) context.getSystemService(Context.MEDIA_PROJECTION_SERVICE)).
+                    getMediaProjection(Activity.RESULT_OK, data);
+            ;
         }
         VirtualDisplay virtualDisplay = mediaProjection.createVirtualDisplay("screen_mirror", screenWidth, screenHeight, screenDensity,
                 DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
-                imageReader.getSurface(),null, null);
+                imageReader.getSurface(), null, null);
         return true;
     }
 
-    private void startCapture(){
+    private void startCapture() {
         Observable.just(1)
                 .flatMap(new Func1<Integer, Observable<String>>() {
                     @Override
@@ -86,10 +94,10 @@ public class NewScreenShotUtilImpl extends ScreenShotUtil{
                                 if (imageReader != null) {
                                     image = imageReader.acquireLatestImage();
                                 }
-                                if (image == null && data!=null){
+                                if (image == null && data != null) {
                                     subscriber.onNext("");
                                     subscriber.onCompleted();
-                                }else {
+                                } else {
                                     Bitmap bitmap = UIUtil.image2Bitmap(image);
 
                                     File fileImage = null;
@@ -98,16 +106,19 @@ public class NewScreenShotUtilImpl extends ScreenShotUtil{
                                         if (!fileImage.getParentFile().exists()) {
                                             fileImage.getParentFile().mkdirs();
                                         }
-                                        if (!fileImage.exists()){
+                                        if (!fileImage.exists()) {
                                             fileImage.createNewFile();
                                         }
                                         FileOutputStream outputStream = new FileOutputStream(fileImage);
-                                        bitmap.compress(Bitmap.CompressFormat.PNG,100,outputStream);
+                                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
                                         outputStream.flush();
                                         outputStream.close();
 
                                         Intent media = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-                                        Uri contentUri = Uri.fromFile(fileImage);
+
+                                        Uri contentUri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID, fileImage);
+
+//                                        Uri contentUri = Uri.fromFile(fileImage);
                                         media.setData(contentUri);
                                         context.sendBroadcast(media);
                                         subscriber.onNext(fileImage.getAbsolutePath());
@@ -137,7 +148,7 @@ public class NewScreenShotUtilImpl extends ScreenShotUtil{
             public void run() {
                 if (startVirtual()) startCapture();
             }
-        },80);
+        }, 80);
     }
 
     public void startScreenshotAfterGranted() {
@@ -147,7 +158,7 @@ public class NewScreenShotUtilImpl extends ScreenShotUtil{
             public void run() {
                 if (startVirtual()) startCapture();
             }
-        },100);
+        }, 100);
     }
 
     @Override

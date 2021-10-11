@@ -1,4 +1,4 @@
-package com.zyongjun.easytouch.service;
+package easytouch.service;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -22,13 +22,13 @@ import android.view.View;
 import com.windhike.fastcoding.BaseApplication;
 import com.windhike.fastcoding.CommonFragmentActivity;
 import com.zyongjun.easytouch.R;
-import com.zyongjun.easytouch.screenshot.NewScreenShotUtilImpl;
-import com.zyongjun.easytouch.screenshot.OldScreenShotUtilImpl;
-import com.zyongjun.easytouch.screenshot.ScreenShotUtil;
-import com.zyongjun.easytouch.view.ColorHolder;
-import com.zyongjun.easytouch.view.FloatSettingView;
-import com.zyongjun.easytouch.view.IconHolder;
-import com.zyongjun.easytouch.view.MenuHolder;
+import easytouch.screenshot.NewScreenShotUtilImpl;
+import easytouch.screenshot.OldScreenShotUtilImpl;
+import easytouch.screenshot.ScreenShotUtil;
+import easytouch.view.ColorHolder;
+import easytouch.view.FloatSettingView;
+import easytouch.view.IconHolder;
+import easytouch.view.MenuHolder;
 
 /**
  * author:gzzyj on 2017/8/7 0007.

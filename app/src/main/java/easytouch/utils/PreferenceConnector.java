@@ -1,4 +1,4 @@
-package com.zyongjun.easytouch.utils;
+package easytouch.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

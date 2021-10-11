@@ -1,4 +1,4 @@
-package com.zyongjun.easytouch.view;
+package easytouch.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,9 @@ import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import easytouch.service.DrawMenuService;
+import easytouch.utils.PreferenceConnector;
+
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,15 +19,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.zyongjun.easytouch.R;
-import com.zyongjun.easytouch.service.DrawMenuService.HolderSwitchCallback;
-import com.zyongjun.easytouch.utils.PreferenceConnector;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-import static com.zyongjun.easytouch.view.ColorPickerView.KEY_COLOR_SELECTED;
+import static easytouch.view.ColorPickerView.KEY_COLOR_SELECTED;
 
 /**
  * author:gzzyj on 2017/7/30 0030.
@@ -211,7 +213,7 @@ public class FloatSettingView extends RelativeLayout implements View.OnClickList
     private int mDrawingShape;
     private LocalBroadcastManager mBroadcastmanager;
 
-    private HolderSwitchCallback mSettingCallback;
+    private DrawMenuService.HolderSwitchCallback mSettingCallback;
 
 
     public void saveToSdcardPNG(File file, Bitmap bitmap) {
@@ -277,7 +279,7 @@ public class FloatSettingView extends RelativeLayout implements View.OnClickList
         mBroadcastmanager.sendBroadcast(intent);
     }
 
-    public void setSettingCallback(HolderSwitchCallback callback) {
+    public void setSettingCallback(DrawMenuService.HolderSwitchCallback callback) {
         this.mSettingCallback = callback;
         if (callback != null) {
             setOnClickListener(callback.obtainMenuOutsideListener());

@@ -1,4 +1,4 @@
-package com.zyongjun.easytouch;
+package easytouch;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -9,13 +9,10 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.IBinder;
-import android.util.Log;
 
-import com.zyongjun.easytouch.screenshot.NewScreenShotUtilImpl;
+import easytouch.screenshot.NewScreenShotUtilImpl;
 
 import androidx.annotation.Nullable;
-
-import static android.content.ContentValues.TAG;
 
 public class ScreenRecorder extends Service {
     @Nullable
@@ -42,9 +39,9 @@ public class ScreenRecorder extends Service {
         Intent nfIntent = new Intent("android.intent.action.MAIN"); //点击后跳转的界面，可以设置跳转数据
 
         builder.setContentIntent(PendingIntent.getActivity(this, 0, nfIntent, 0)) // 设置PendingIntent
-                .setLargeIcon(BitmapFactory.decodeResource(this.getResources(), R.mipmap.ic_launcher)) // 设置下拉列表中的图标(大图标)
+                .setLargeIcon(BitmapFactory.decodeResource(this.getResources(), com.zyongjun.easytouch.R.mipmap.ic_launcher)) // 设置下拉列表中的图标(大图标)
                 //.setContentTitle("SMI InstantView") // 设置下拉列表里的标题
-                .setSmallIcon(R.mipmap.ic_launcher) // 设置状态栏内的小图标
+                .setSmallIcon(com.zyongjun.easytouch.R.mipmap.ic_launcher) // 设置状态栏内的小图标
                 .setContentText("screen capture is running......") // 设置上下文内容
                 .setWhen(System.currentTimeMillis()); // 设置该通知发生的时间
 

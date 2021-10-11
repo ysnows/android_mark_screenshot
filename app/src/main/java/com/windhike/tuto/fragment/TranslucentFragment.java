@@ -14,9 +14,9 @@ import com.windhike.annotation.model.PreferenceConnector;
 import com.windhike.fastcoding.CommonFragmentActivity;
 import com.windhike.fastcoding.base.BaseFragment;
 import com.windhike.tuto.R;
-import com.zyongjun.easytouch.ScreenRecorder;
-import com.zyongjun.easytouch.screenshot.NewScreenShotUtilImpl;
-import com.zyongjun.easytouch.view.FloatSettingView;
+import easytouch.ScreenRecorder;
+import easytouch.screenshot.NewScreenShotUtilImpl;
+import easytouch.view.FloatSettingView;
 
 /**
  * author:gzzyj on 2017/9/9 0009.

@@ -1,4 +1,4 @@
-package com.zyongjun.easytouch.view;
+package easytouch.view;
 
 import android.content.Context;
 import android.view.View;
