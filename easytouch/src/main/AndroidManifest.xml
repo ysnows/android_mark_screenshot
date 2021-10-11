@@ -1,12 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zyongjun.easytouch" >
+    package="com.zyongjun.com.windhike.tuto.easytouch" >
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application>
-        <service android:name="easytouch.service.DrawMenuService"/>
+        <service android:name="com.windhike.tuto.easytouch.service.DrawMenuService"/>
 
         <service
             android:name=".ScreenRecorder"

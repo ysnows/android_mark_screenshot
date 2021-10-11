@@ -8,7 +8,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.windhike.annotation.configsapp.AnnotationInitialize;
 import com.windhike.annotation.model.PreferenceConnector;
 import com.windhike.fastcoding.BaseApplication;
-import easytouch.view.FloatSettingView;
+import com.windhike.tuto.easytouch.view.FloatSettingView;
 
 /**
  * author: zyongjun on 2017/6/30 0030.

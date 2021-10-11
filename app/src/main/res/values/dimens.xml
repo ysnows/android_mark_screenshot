@@ -136,4 +136,5 @@
     <dimen name="register_btn_w">200dp</dimen>
     <dimen name="register_btn_h">45dp</dimen>
 
+
 </resources>
