@@ -14,7 +14,8 @@ import java.util.Date;
 public class FileUtil {
 
     //系统保存截图的路径
-    public static final String SCREENCAPTURE_PATH = "UM" + File.separator + "Screenshots" + File.separator;
+    public static final String SCREENCAPTURE_PATH = "Screenshots" + File.separator;
+//    public static final String SCREENCAPTURE_PATH = "UM" + File.separator + "Screenshots" + File.separator;
 
     public static final String SCREENSHOT_NAME = "Screenshot";
 
@@ -31,9 +32,9 @@ public class FileUtil {
     public static String getScreenShots(Context context) {
 
         StringBuffer stringBuffer = new StringBuffer(getAppPath(context));
-        stringBuffer.append(File.separator);
+//        stringBuffer.append(File.separator);
 
-        stringBuffer.append(SCREENCAPTURE_PATH);
+//        stringBuffer.append(SCREENCAPTURE_PATH);
 
         File file = new File(stringBuffer.toString());
 

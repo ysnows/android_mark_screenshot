@@ -109,6 +109,7 @@ public class NewScreenShotUtilImpl extends ScreenShotUtil {
                                         if (!fileImage.exists()) {
                                             fileImage.createNewFile();
                                         }
+
                                         FileOutputStream outputStream = new FileOutputStream(fileImage);
                                         bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
                                         outputStream.flush();
