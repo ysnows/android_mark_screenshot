@@ -1,1 +1,3 @@
-include ':app', ':annotation', ':com.windhike.tuto.easytouch', ':androidfastcoding_java'
+include ':app',
+        ':annotation',
+        ':androidfastcoding_java'
