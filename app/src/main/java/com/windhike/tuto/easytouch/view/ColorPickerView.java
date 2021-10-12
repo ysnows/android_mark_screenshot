@@ -2,9 +2,11 @@ package com.windhike.tuto.easytouch.view;
 
 import android.content.Context;
 import android.content.Intent;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import com.windhike.tuto.easytouch.service.DrawMenuService;
 import com.windhike.tuto.easytouch.utils.PreferenceConnector;
 
@@ -23,7 +25,7 @@ import java.util.HashMap;
  * author:gzzyj on 2017/7/30 0030.
  * email:zhyongjun@windhike.cn
  */
-public class ColorPickerView extends RelativeLayout implements View.OnClickListener{
+public class ColorPickerView extends RelativeLayout implements View.OnClickListener {
     private View mRootView;
     private TextView vColor0;
     private TextView vColor1;
@@ -71,7 +73,7 @@ public class ColorPickerView extends RelativeLayout implements View.OnClickListe
         vColor1.setOnClickListener(this);
         vColor2 = (TextView) mRootView.findViewById(R.id.vColor2);
         vColor2.setOnClickListener(this);
-        vColor3 = (TextView)mRootView. findViewById(R.id.vColor3);
+        vColor3 = (TextView) mRootView.findViewById(R.id.vColor3);
         vColor3.setOnClickListener(this);
         vColor4 = (TextView) mRootView.findViewById(R.id.vColor4);
         vColor4.setOnClickListener(this);
@@ -81,24 +83,24 @@ public class ColorPickerView extends RelativeLayout implements View.OnClickListe
         vColor6.setOnClickListener(this);
         vColor7 = ((TextView) mRootView.findViewById(R.id.vColor7));
         vColor7.setOnClickListener(this);
-        vColor8 = (TextView)mRootView.findViewById(R.id.vColor8);
+        vColor8 = (TextView) mRootView.findViewById(R.id.vColor8);
         vColor8.setOnClickListener(this);
-        vColor9 = (TextView)mRootView.findViewById(R.id.vColor9);
+        vColor9 = (TextView) mRootView.findViewById(R.id.vColor9);
         vColor9.setOnClickListener(this);
-        vColor10 = (TextView)mRootView.findViewById(R.id.vColor10);
+        vColor10 = (TextView) mRootView.findViewById(R.id.vColor10);
         vColor10.setOnClickListener(this);
-        vColor11 = (TextView)mRootView.findViewById(R.id.vColor11);
+        vColor11 = (TextView) mRootView.findViewById(R.id.vColor11);
         vColor11.setOnClickListener(this);
-        vColor12 = (TextView)mRootView.findViewById(R.id.vColor12);
+        vColor12 = (TextView) mRootView.findViewById(R.id.vColor12);
         vColor12.setOnClickListener(this);
-        vColor13 = (TextView)mRootView.findViewById(R.id.vColor13);
+        vColor13 = (TextView) mRootView.findViewById(R.id.vColor13);
         vColor13.setOnClickListener(this);
-        vColor14 = (TextView)mRootView.findViewById(R.id.vColor14);
+        vColor14 = (TextView) mRootView.findViewById(R.id.vColor14);
         vColor14.setOnClickListener(this);
-        vColor15 = (TextView)mRootView.findViewById(R.id.vColor15);
+        vColor15 = (TextView) mRootView.findViewById(R.id.vColor15);
         vColor15.setOnClickListener(this);
         handleSelectState();
-        addView(mRootView,rootParams);
+        addView(mRootView, rootParams);
     }
 
     public static final String ACTION_COLOR_CHANGED = "ACTION_COLOR_CHANGED";
@@ -109,18 +111,18 @@ public class ColorPickerView extends RelativeLayout implements View.OnClickListe
     private DrawMenuService.HolderSwitchCallback mSettingCallback;
 
     public void onColorChanged(int index) {
-        HashMap<String,String> map = new HashMap<>();
-        map.put("index",String.valueOf(index));
+        HashMap<String, String> map = new HashMap<>();
+        map.put("index", String.valueOf(index));
 
         PreferenceConnector.writeInteger(getContext(), KEY_COLOR_SELECTED, index);
         Intent intent = new Intent(ACTION_COLOR_CHANGED);
-        intent.putExtra(ACTION_COLOR_CHANGED,index);
+        intent.putExtra(ACTION_COLOR_CHANGED, index);
         mBroadcastmanager.sendBroadcast(intent);
     }
 
     public void switchZoomMode(boolean isSwitchToZoomMode) {
         Intent intent = new Intent(ACTION_SCALE_MODE_CHANGED);
-        intent.putExtra(ACTION_SCALE_MODE_CHANGED,isSwitchToZoomMode);
+        intent.putExtra(ACTION_SCALE_MODE_CHANGED, isSwitchToZoomMode);
         mBroadcastmanager.sendBroadcast(intent);
     }
 
@@ -130,9 +132,11 @@ public class ColorPickerView extends RelativeLayout implements View.OnClickListe
             setOnClickListener(callback.obtainMenuOutsideListener());
         }
     }
+
     public static final String KEY_COLOR_SELECTED = "KEY_COLOR_SELECTED";
+
     private void handleSelectState() {
-        int colorIndex = PreferenceConnector.readInteger(getContext(),KEY_COLOR_SELECTED,0);
+        int colorIndex = PreferenceConnector.readInteger(getContext(), KEY_COLOR_SELECTED, 0);
         resetAllSelectedState();
         switch (colorIndex) {
             case 0:
