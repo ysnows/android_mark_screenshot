@@ -18,7 +18,7 @@
         <item>@color/c_draw14</item>
         <item>@color/c_draw15</item>
     </integer-array>
-    <integer-array name="draw_bgres" >
+    <integer-array name="draw_bgres">
         <item>@drawable/anno_color0_selector</item>
         <item>@drawable/anno_color1_selector</item>
         <item>@drawable/anno_color2_selector</item>
