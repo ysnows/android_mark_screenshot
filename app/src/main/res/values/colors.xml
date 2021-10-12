@@ -189,8 +189,8 @@
     <color name="split">#939393</color>
     <color name="c_draw_one">#f65252</color>
 
-    <color name="c_draw0">#ffffff</color>
-    <color name="c_draw1">#e60012</color>
+    <color name="c_draw0">#e60012</color>
+    <color name="c_draw1">#ffffff</color>
     <color name="c_draw2">#f39800</color>
     <color name="c_draw3">#fcc800</color>
     <color name="c_draw4">#fff100</color>
