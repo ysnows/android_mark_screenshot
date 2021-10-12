@@ -23,17 +23,19 @@ import android.widget.Toast;
 
 import com.windhike.fastcoding.rx.SchedulersTransFormer;
 import com.windhike.fastcoding.util.UIUtil;
+import com.windhike.tuto.BuildConfig;
 import com.windhike.tuto.R;
 import com.windhike.tuto.easytouch.utils.FileUtil;
+import com.windhike.tuto.utils.NougatTools;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 import androidx.core.content.FileProvider;
 import rx.Observable;
 import rx.Subscriber;
-import rx.android.BuildConfig;
 import rx.functions.Func1;
 
 /**
@@ -110,14 +112,14 @@ public class NewScreenShotUtilImpl extends ScreenShotUtil {
                                             fileImage.createNewFile();
                                         }
 
-                                        FileOutputStream outputStream = new FileOutputStream(fileImage);
+                                        Uri contentUri = NougatTools.formatFileProviderUri(context, fileImage);
+                                        OutputStream outputStream = context.getContentResolver().openOutputStream(contentUri);
+//                                        FileOutputStream outputStream = new FileOutputStream(fileImage);
                                         bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
                                         outputStream.flush();
                                         outputStream.close();
 
                                         Intent media = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-
-                                        Uri contentUri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID, fileImage);
 
 //                                        Uri contentUri = Uri.fromFile(fileImage);
                                         media.setData(contentUri);

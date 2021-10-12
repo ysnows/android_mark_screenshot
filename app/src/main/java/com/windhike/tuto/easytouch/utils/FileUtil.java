@@ -7,6 +7,8 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static android.os.Environment.DIRECTORY_PICTURES;
+
 /**
  * Created by Aria on 2017/7/19.
  */
@@ -20,11 +22,11 @@ public class FileUtil {
     public static final String SCREENSHOT_NAME = "Screenshot";
 
     public static String getAppPath(Context context) {
-        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-            return Environment.getExternalStorageDirectory().toString();
-        } else {
-            return context.getFilesDir().toString();
-        }
+//        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+//            return Environment.getExternalStorageDirectory().toString();
+//        } else {
+        return context.getExternalFilesDir(DIRECTORY_PICTURES).toString();
+//        }
 
     }
 
@@ -32,7 +34,7 @@ public class FileUtil {
     public static String getScreenShots(Context context) {
 
         StringBuffer stringBuffer = new StringBuffer(getAppPath(context));
-//        stringBuffer.append(File.separator);
+        stringBuffer.append(File.separator);
 
 //        stringBuffer.append(SCREENCAPTURE_PATH);
 

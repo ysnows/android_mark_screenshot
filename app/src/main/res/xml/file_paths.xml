@@ -6,6 +6,9 @@
         <external-path
             name="external-path"
             path="" />
+        <external-files-path
+            name="external-files-path"
+            path="" />
     </paths>
 
 
